@@ -1,0 +1,19 @@
+[project]
+name = "difftest"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "freeingtruth",
+    "matplotlib>=3.10.8",
+]
+
+[tool.uv.sources]
+freeingtruth = { url = "https://github.com/freeingtruthgh/hw00freeingtruth/releases/download/v1.0.0/freeingtruth-0.1.0-cp39-abi3-linux_x86_64.whl" }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+    "jupyter>=1.1.1",
+]
