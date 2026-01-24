@@ -11,13 +11,11 @@ This `differential` subpackage contains the function `diff`, which computes the 
 
 ## Installation
 1. install `uv`
-1.  install the package:
+2.  install the package:
     ```bash
-    pip install freeingtruth 
-(dependencies should automatically install from inline metadata)
-2.  importing the function:
-    ```bash
-    from freeingtruth.differential.discrete import diff
+    pip install freeingtruth
+    ```
+    (dependencies should automatically install from inline metadata)
 
 ## run test code
 A UV project named `difftest` exists is in `hw00freeingtruth` repository.
@@ -26,10 +24,14 @@ A UV project named `difftest` exists is in `hw00freeingtruth` repository.
     ```bash
     cd difftest 
     source .venv/bin/activate
+    ```
 3. Run the Jupyter notebook:
     ```bash
     uv run difftest.ipynb
-A Jupyter kernel named `difftest` is also available for running the notebook.
+    ```
+    A Jupyter kernel named `difftest` is also available for running the notebook.
+4. Get Results:
+    Inside `difftest` project directory there are results named Singal_vs_Time.pdf and Derivative_vs_Time.pdf. 
 
 # deep1 subpackage
 The `deep1` subpackage contains the function `binary_classification`, which trains a two-layer neural network for binary classification.
@@ -44,26 +46,32 @@ It returns:
 - Final trained weights
 - Loss history at each epoch
 
-## installation (local build required)
+## Installation (local build required)
 The `deep1` subpackage is not included in the published wheel and must be built locally.
 1. Clone the `hw00freeingtruth` repository
 2. Navigate to the project directory:
     ```bash
     cd freeingtruth
     source .venv/bin/activate
+    ```
 3. Sync dependencies:
     ```bash
     uv sync
+    ```
 
-## run test code
+## Run test code
 1. Navigate to the root directory of uv project and activate the virtual environment:
     ```bash
     cd freeingtruth
     source .venv/bin/activate
+    ```
 
 2. Run the test script:
     ```bash
     uv run src/scripts/binaryclassification_impl.py
+    ```
+3. Get Results:
+    A plot should popup showing the loss vs epochs,, also inside `freeingtruth` project there will be a saved pdf with the name (YYYYMMDDhhmmss.pdf)
 
 # Notes
 - This package is under active development
