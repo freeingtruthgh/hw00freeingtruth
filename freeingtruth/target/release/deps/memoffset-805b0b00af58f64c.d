@@ -1,0 +1,10 @@
+/home/tbl0009/hw00freeingtruth/freeingtruth/target/release/deps/memoffset-805b0b00af58f64c.d: /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs
+
+/home/tbl0009/hw00freeingtruth/freeingtruth/target/release/deps/libmemoffset-805b0b00af58f64c.rlib: /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs
+
+/home/tbl0009/hw00freeingtruth/freeingtruth/target/release/deps/libmemoffset-805b0b00af58f64c.rmeta: /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs /home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs
+
+/home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/lib.rs:
+/home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/raw_field.rs:
+/home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/offset_of.rs:
+/home/tbl0009/.cache/puccinialin/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memoffset-0.9.1/src/span_of.rs:
