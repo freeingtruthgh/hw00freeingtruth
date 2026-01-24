@@ -15,7 +15,7 @@ This `differential` subpackage contains the function `diff`, which computes the 
     ```bash
     pip install freeingtruth 
 (dependencies should automatically install from inline metadata)
-2.  import the function:
+2.  importing the function:
     ```bash
     from freeingtruth.differential.discrete import diff
 
@@ -47,18 +47,16 @@ It returns:
 ## installation (local build required)
 The `deep1` subpackage is not included in the published wheel and must be built locally.
 1. Clone the `hw00freeingtruth` repository
-2. Navigate to the package directory:
+2. Navigate to the project directory:
     ```bash
     cd freeingtruth
+    source .venv/bin/activate
 3. Sync dependencies:
     ```bash
     uv sync
-4. Import the function:
-    ```bash
-    from freeingtruth.deep1.two_layer_binary_classification import binary_classification
 
 ## run test code
-1. Navigate to the root directory of package and activate the virtual environment:
+1. Navigate to the root directory of uv project and activate the virtual environment:
     ```bash
     cd freeingtruth
     source .venv/bin/activate
