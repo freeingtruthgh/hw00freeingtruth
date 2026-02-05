@@ -1,4 +1,4 @@
-from freeingtruth.deep1.two_layer_binary_classification import binary_classification
+from freeingtruth import deepl
 import matplotlib.pyplot as plt
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -7,7 +7,7 @@ d = 64              # number of features
 n = 1000            # number of data samples
 epochs = 10000      # default value of epochs
 
-w_1, w_2, w_3, w_4, loss_vals = binary_classification(d,n)
+w_1, w_2, w_3, w_4, loss_vals = deep1.binary_classification(d,n)
 
 # Create a time stamp to name the file
 filename = datetime.now(ZoneInfo("America/Chicago")).strftime("%Y%m%d%H%M%S.pdf")

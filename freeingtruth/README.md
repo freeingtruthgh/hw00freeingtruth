@@ -33,8 +33,8 @@ A UV project named `difftest` exists is in `hw00freeingtruth` repository.
 4. Get Results:
     Inside `difftest` project directory there are results named Singal_vs_Time.pdf and Derivative_vs_Time.pdf. 
 
-# deep1 subpackage
-The `deep1` subpackage contains the function `binary_classification`, which trains a two-layer neural network for binary classification.
+# deepl subpackage
+The `deepl` subpackage contains the function `binary_classification`, which trains a two-layer neural network for binary classification.
 
 ## Description
 The function takes:
@@ -47,7 +47,7 @@ It returns:
 - Loss history at each epoch
 
 ## Installation (local build required)
-The `deep1` subpackage is not included in the published wheel and must be built locally.
+The `deepl` subpackage is not included in the published wheel and must be built locally.
 1. Clone the `hw00freeingtruth` repository
 2. Navigate to the project directory:
     ```bash
@@ -68,13 +68,13 @@ The `deep1` subpackage is not included in the published wheel and must be built 
 
 2. Run the test script:
     ```bash
-    uv run src/scripts/binaryclassification_impl.py
+    uv run scripts/binaryclassification_impl.py
     ```
 3. Get Results:
     A plot should popup showing the loss vs epochs,, also inside `freeingtruth` project there will be a saved pdf with the name (YYYYMMDDhhmmss.pdf)
 
 # Notes
 - This package is under active development
-- No updated `.whl` file is available for the `deep1` subpackage yet and requires a local build
+- No updated `.whl` file is available for the `deepl` subpackage yet and requires a local build
 
 
