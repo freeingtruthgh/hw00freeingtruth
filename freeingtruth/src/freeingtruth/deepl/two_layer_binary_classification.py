@@ -61,9 +61,11 @@ def binary_classification(d: int,n: int, epochs: int=10000, lr: float=0.001) -> 
     for epoch in range(epochs):
         # Forward pass: Comput predicted y
         Z_1 = X@w_1
-        A_1 = torch.sigmoid(Z_1@w_2)
+        Z_1 = Z_1@w_2
+        A_1 = torch.sigmoid(Z_1)
         Z_2 = A_1@w_3
-        A_3= torch.sigmoid(Z_2@w_4)
+        Z_2 = Z_2@w_4
+        A_3= torch.sigmoid(Z_2)
         Y_pred=A_3
 
         # Compute loss
