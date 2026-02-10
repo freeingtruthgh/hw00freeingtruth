@@ -7,7 +7,6 @@
 # ///
 
 import torch
-import numpy as np
 
 def binary_classification(d: int,n: int, epochs: int=10000, lr: float=0.001) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, list[float]]:
     """
@@ -47,12 +46,19 @@ def binary_classification(d: int,n: int, epochs: int=10000, lr: float=0.001) -> 
     Y= (row_sum>2).float()
 
     # Initialize Weights; setting requires_grad=True tracks the computational graph
-    w_1 = torch.nn.Parameter(torch.randn(d, 48, dtype=torch.float32, device=device)* np.sqrt(2/d))
-    w_2 = torch.nn.Parameter(torch.randn(48, 16, dtype=torch.float32, device=device)*np.sqrt(2/48))
-    w_3 = torch.nn.Parameter(torch.randn(16, 32, dtype=torch.float32, device=device)*np.sqrt(2/16))
-    w_4 = torch.nn.Parameter(torch.randn(32, 1, dtype=torch.float32, device=device)* np.sqrt(2/32))
+    current_dtype = torch.float32
+    w_1 = torch.nn.Parameter(torch.randn(d, 48, dtype=current_dtype, device=device)* torch.sqrt(torch.tensor(2/d, device=device, dtype=current_dtype)))
+    w_3 = torch.nn.Parameter(torch.randn(16, 32, dtype=current_dtype, device=device)*torch.sqrt(torch.tensor(2/16, device=device, dtype=current_dtype)))
+    w_2 = torch.nn.Parameter(torch.randn(48, 16, dtype=current_dtype, device=device)*torch.sqrt(torch.tensor(2/48, device=device, dtype=current_dtype)))
+    w_4 = torch.nn.Parameter(torch.randn(32, 1, dtype=current_dtype, device=device)* torch.sqrt(torch.tensor(2/32, device=device, dtype=current_dtype)))
 
-    # lists to store weights and losses over epochs
+    # initilize variables to save updated weights over each epoch
+    W1_updates = torch.zeros(epochs, d, 48)
+    W2_updates = torch.zeros(epochs, 48, 16)
+    W3_updates = torch.zeros(epochs, 16, 32)
+    W4_updates = torch.zeros(epochs, 32, 1)
+
+    # lists to store losses over epochs
     loss_vals = []
 
     # Define the loss function: 
@@ -86,8 +92,12 @@ def binary_classification(d: int,n: int, epochs: int=10000, lr: float=0.001) -> 
             w_3.grad.zero_()
             w_4.grad.zero_()
 
-        # Store weight values at each epoch
+        # Store updated weight values at each epoch
+            W1_updates[epoch] = w_1.clone()
+            W2_updates[epoch] = w_2.clone()
+            W3_updates[epoch] = w_3.clone()
+            W4_updates[epoch] = w_4.clone()
         # move to CPU for storage in Python lists
         loss_vals.append(loss.item())
 
-    return w_1.detach().cpu(), w_2.detach().cpu(), w_3.detach().cpu(), w_4.detach().cpu(), loss_vals
+    return W1_updates.detach().cpu(), W2_updates.detach().cpu(), W3_updates.detach().cpu(), W4_updates.detach().cpu(), loss_vals
