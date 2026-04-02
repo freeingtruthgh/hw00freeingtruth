@@ -6,6 +6,11 @@ from .animation import LargeWeightMatrixAnime
 from .animation import animate_large_heatmap
 from .deepl import SimpleNN
 from .deepl import ClassTrainer
+from .deepl import ImageNetCNN
+from .deepl import CNNTrainer
+from .deepl import ACCNet
+from .deepl import ACCTrainer
+from .deepl import DiceLoss
 
 def hello() -> str:
     return hello_from_bin()
