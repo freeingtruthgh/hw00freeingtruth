@@ -174,7 +174,7 @@ Note that `multiclass_impl.py` uses Hugging Face version of the ImageNet dataset
 # HW03Q7
 The file `acc_classifier.py` in `deepl` subpackage has been added to includes a ACC model class along with its associated training pipeline. This model is trying to learn when a cars Adaptive Cruise Control (ACC) is enabled or not from traffic data. The model only looks at velocity states. 
 
-A test script, `ACCNet_impl.py`, has been added to the `scripts` directory. This script trains the model and generates plots of training and validation loss and accuracy versus epochs. Aw well the script saves an ONNX file of the trained model. The shell script `ACCNet_impl.sh` runs a single experiment with predefined hyperparameters for `ACCNet_impl.py`. 
+A test script, `ACCNet_impl.py`, has been added to the `scripts` directory. This script trains the model and generates plots of training and validation loss and accuracy versus epochs. As well the script saves an ONNX file of the trained model. The shell script `ACCNet_impl.sh` runs a single experiment with predefined hyperparameters for `ACCNet_impl.py`. 
 
 ## Running the test script
 1. Navigate to the project directory:
@@ -201,8 +201,131 @@ A test script, `ACCNet_impl.py`, has been added to the `scripts` directory. This
 3. Get Results:
     Inside `scripts` and the new `results` folder there will be two saved pdf with the name accnet_Accuracy_vs_Epochs.pdf and accnet_Loss_vs_epochs.pdf these are the plots from the training. As well inside `scripts` there will be a saved onnx model named Trained_ACCNet.onnx.
 
+# HW04
+The file `gen_model.py` in `deepl` subpackage has been added to implement and evaluate three generative models:
+
+- Variational Autoencoder (VAE)
+- Generative Adversarial Network (GAN)
+- Diffusion Model (DDPM)
+
+`gen_model.py` also includes each models associated training pipeline.
+
+## Structure
+
+### Core Modules
+
+- **`gen_model.py`**
+  - Contains implementations of:
+    - VAE
+    - GAN (Generator + Discriminator)
+    - Diffusion Model (DDPM + UNet)
+  - Includes a unified training pipeline (`GenModelTrainer`)
+
+- **`metrics.py`**
+  - Implements image quality evaluation metrics:
+    - Variance of Laplacian
+    - Tenengrad Criterion
+    - Frequency-Domain High-Frequency Energy Ratio
+    - Mean Local Standard Deviation
+    - GLCM Contrast
+
+## Scripts
+
+### Training Script
+
+**`gen_model_impl.py`**
+
+This script:
+- Loads and preprocesses the CelebA dataset
+- Trains a selected model (`VAE`, `GAN`, or `DIFFUSION`)
+- Saves intermediate and final ONNX checkpoints
+
+Key command-line arguments:
+- `-m` / `--model_type`: `"VAE"`, `"GAN"`, `"DIFFUSION"`
+- `-l` / `--loss`: loss function to use
+- `-e` / `--epochs`: number of training epochs
+- `-r` / `--eta`: learning rate
+- `-x` / `--save_epoch`: frequency of ONNX checkpoint saving
+- `-T` / `--train_ratio`: fraction of training dataset used
+- `-v` / `--val_ratio`: fraction of validation dataset used
+
+### Inference Script
+
+**`gen_model_inference.py`**
+
+This script:
+- Loads trained ONNX models
+- Generates **25 synthetic images**
+- Saves:
+  - A 5×5 grid of generated images
+  - Individual images
+- Computes image quality metrics from `metrics.py`
+- Generates a **boxplot summarizing metrics**
+
+### Shell Script (Full Pipeline)
+
+**`gen_model_impl.sh`**
+
+This script:
+- Runs all three models (VAE, GAN, Diffusion)
+- Assigns each model to a separate GPU
+- Waits for all training jobs to complete
+- Runs inference and evaluation for each model
+
+## Running the test script
+1. Navigate to the project directory:
+    ```bash
+    cd freeingtruth
+    source .venv/bin/activate
+    ```
+2. Sync dependencies and build (if needed):
+    ```bash
+    uv sync
+    uv build
+    ```
+3. Run training and inference pipeline:
+    ```bash
+    cd scripts
+    ./gen_model_impl.sh
+    ```
+
+    Alternatively, you can run in background (Recommeneded):
+    ```bash
+    cd scripts
+    nohup ./gen_model_impl.sh > training_gen_log.out 2>&1 &
+    ```
+
+    monitor progress:
+    ```bash
+    tail -f training_gen_log.out
+    ```
+3. Get Results:
+    Generated outputs are saved in `scripts/results/Images`. Outputs include:
+        - Image grids: {model_type}_grid.png
+        - Individual Generated Images: {model_type}_samples/
+        - Metrics CSV: {model_type}_metrics.csv
+        - Summary Metrics: {model_type}_metrics_summary.csv
+        - Box Plot Visualization: {model_type}_metrics_boxplot.png
+
+    Saved models are saved in `scripts` with the names:
+        - vae_final_model_decoder.onnx
+        - gan_final_model.onnx
+        - diffusion_final_model.onnx
+
+    
+    Notes:
+    - Training time varies significantly:
+        - GAN and Diffusion models are computationally expensive
+    - Dataset ratios (`-T`, `-v`) can be reduced to speed up training
+    - Learning rate tuning is critical:
+        - High learning rates can lead to noisy or unstable outputs
+    - Current results show noisy outputs, indicatin:
+        - Undertraining or hyperparameter tuning still required
+    Further debugging and longer training runs may be needed to improve image quality.
+
 # Notes
 - This package is under active development
 - No updated `.whl` file is available for the `deepl` subpackage yet and requires a local build
+- how to check which PID of script running in background: ps -aef | grep IQL_impl
 
 
